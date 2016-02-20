@@ -16,6 +16,7 @@
 # solutions for matrices
 import numpy as np
 from scipy.linalg import solve
+from scipy.integrate import quad
 
 class Method:
     NAIVE, PARTIAL, SCALED_PARTIAL, LU_FACTORIZATION, GAUSS_SEIDER = range(0, 5) 
@@ -199,6 +200,11 @@ def Gauss_Seider(M, b, x, n):
         x = np.dot(np.linalg.inv(L), b - np.dot(U, x))
     return x
 
+def Hilbert_matrix(n):
+    # create A
+    mat = [[1/float(col+row+1) for col in range(0,n)] for row in range(0,n)] 
+    "Missig implementation of Ab = x"
+    return mat;
 
 A = np.array([[4.0, -2.0, 1.0], [1.0, -3.0, 2.0], [-1.0, 2.0, 6.0]])
 b = [1,2,3]
@@ -231,22 +237,12 @@ solve_matrix(B, Method.NAIVE)
 solve_matrix(B, Method.PARTIAL)
 solve_matrix(B, Method.SCALED_PARTIAL)
 solve_matrix(B, Method.GAUSS_SEIDER)
+print "\n Hilbert Matrix with n=3\n"
+print Hilbert_matrix(3) # construct a Hilber matrix of H(n)
 
-
-
-
-
-                
-        
-          
-            
-    
-        
          
     
-#print backSub(rowReduce([[25,5,1,106.8], [64,8,1,177.2], [144,12,1,279.2]]))
-#print backSub(partial_pivoting([[25,5,1,106.8], [64,8,1,177.2], [144,12,1,279.2]]))
-#print backSub(scaled_partial_pivoting([[25,5,1,106.8], [64,8,1,177.2], [144,12,1,279.2]]))
+
 
 
   
