@@ -12,12 +12,13 @@
 
 
 """
-# Enumerator containing the methods supported for this file in order to find
+# Libraries containing the methods supported for this file in order to find
 # solutions for matrices
 import numpy as np
-from scipy.linalg import solve
+import math
 from scipy.integrate import quad
 
+# Enumerator that enumerates the Gauss methods supported in this file
 class Method:
     NAIVE, PARTIAL, SCALED_PARTIAL, LU_FACTORIZATION, GAUSS_SEIDER = range(0, 5) 
 
@@ -109,6 +110,7 @@ def addrows(M, f, t, scale=1):
     N[t]=T
     return(N)  
 
+# Test if V is a vector
 def vectorQ(V):
     "mild test to see if V is a vector"
     if type(V) != type([1]):
@@ -116,7 +118,8 @@ def vectorQ(V):
     if type(V[0]) == type([1]):
         return(False)
     return(True)
-    
+
+# Performs scalar multipliation   
 def scalarMult(a,mat):
     "multiply a scalar times a matrix"
     if vectorQ(mat):
@@ -125,6 +128,7 @@ def scalarMult(a,mat):
         for col in range(cols(mat)):
             mat[row][col] = a*mat[row][col]
     return(mat)
+
 # reduce rows in a matrix   
 def rowReduce(M):
     "returns a row reduced version of M"
@@ -146,7 +150,7 @@ def rowReduce(M):
 
 # reduce a single row in a matrix
 def getRowReduced (mat,rowToReduceIndex,pivotRowIndex):
-    "returns a matrix with a single row reduced"
+    "returns a row reduced from a given matrix"
     pivot_row = GetRow(mat, pivotRowIndex)
     row = GetRow(mat, rowToReduceIndex)
     ratio = row[pivotRowIndex] / float(pivot_row[pivotRowIndex])
@@ -154,13 +158,11 @@ def getRowReduced (mat,rowToReduceIndex,pivotRowIndex):
         egv = (ratio * pivot_row[tmpRowIndex]) - row[tmpRowIndex]
         row[tmpRowIndex] = egv
     return row
-
-def backSub(M):
-
+    
 #   given a row reduced augmented matrix with nonzero 
 #   diagonal entries, returns a solution vector
-    
-
+def backSub(M):
+    "Returns the x's solution of a matrix using back sustitution method"
     cs = cols(M)-1 # cols not counting augmented col
     sol = [0 for i in range(cs)] # place for solution vector
     for i in range(1,cs+1):
@@ -171,6 +173,7 @@ def backSub(M):
     
 # Partial pivoting for Gauss elimination
 def partial_pivoting (mat):
+    "Returns a reduced matrix using the scaled partial pivoting method"
     M = copyMatrix(mat)
     for colIndex in range(len(M)-1):
         M.sort(reverse=True)        
@@ -178,8 +181,10 @@ def partial_pivoting (mat):
             row = getRowReduced(M,partialRowIndex+1,colIndex)
             M[partialRowIndex+1] = row # add row back to matrix
     return M
+
 # Scaled partial pivoting for Gauss elimination
 def scaled_partial_pivoting (mat):
+    "Returns a reduced matrix using the scaled partial pivoting method"
     M = copyMatrix(mat)
     max_pivots = vector_of_pivots(M) # gets greater value from every row in mat
     for colIndex in range(len(M)-1):
@@ -192,6 +197,12 @@ def scaled_partial_pivoting (mat):
             M[partialRowIndex+1] = row # add row back to matrix
     return M
 
+# Performs LU Factorization in a matrix
+def LUFactorization (M):
+    "Needs to be implemented"
+    return M
+    
+
 # Gauss Seider aproximation
 def Gauss_Seider(M, b, x, n):
     L = np.tril(M)
@@ -200,13 +211,26 @@ def Gauss_Seider(M, b, x, n):
         x = np.dot(np.linalg.inv(L), b - np.dot(U, x))
     return x
 
-def Hilbert_matrix(n):
-    # create A
-    mat = [[1/float(col+row+1) for col in range(0,n)] for row in range(0,n)] 
-    "Missig implementation of Ab = x"
-    return mat;
+# Construct the b column of a Hilbert Matrix   
+def Hilbert_b(x,n):
+    "Returns the b part of a Hilbert matrix calculated by an integral"
+    return math.pow(x,n)*math.sin((math.pi*x)/2)
 
-A = np.array([[4.0, -2.0, 1.0], [1.0, -3.0, 2.0], [-1.0, 2.0, 6.0]])
+# Construct the Hilbert matrix for a given N
+def Hilbert_matrix(n):
+    "Returns a Hilbert Matrix contructed by a given n"
+    H = [[0 for col in range(0,n+1)] for row in range(0,n)]
+    for row in range(0,n):
+        for col in range(0,n+1):
+            if (col != n):
+                H[row][col] = (1/float(col+row+1))
+            else:
+                H[row][col] = quad(Hilbert_b, 0, 1, args=(row))[0]
+    return H
+
+   
+
+A = np.array([[25,5,1,106.8],[64,8,1,177.2],[144,12,1,279.2]])
 b = [1,2,3]
 x = [1, 1, 1]
 B = [[25,5,1,106.8], [64,8,1,177.2],[144,12,1,279.2]]
@@ -236,11 +260,14 @@ def solve_matrix (M, method):
 solve_matrix(B, Method.NAIVE)
 solve_matrix(B, Method.PARTIAL)
 solve_matrix(B, Method.SCALED_PARTIAL)
-solve_matrix(B, Method.GAUSS_SEIDER)
+#solve_matrix(B, Method.GAUSS_SEIDER)
 print "\n Hilbert Matrix with n=3\n"
 print Hilbert_matrix(3) # construct a Hilber matrix of H(n)
 
-         
+
+
+
+      
     
 
 
