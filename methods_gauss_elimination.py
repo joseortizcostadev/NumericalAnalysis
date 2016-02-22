@@ -310,13 +310,13 @@ def solve_matrix (Hb, method, b, H=None, x=None, n=100):
         r = residual_error(H,gauss_naive_sol,b)
         rnorm = norm_residual_error(r)
         print ("Method: Gauss-Naive\n")
-        printSolutions(Hb,H,gauss_naive_sol,b,r,rnorm) # naive
+        printSolutions(Hb,H,gauss_naive_sol,b,r,rnorm) # Naive
     elif (method == 1):
         gauss_partial_sol = backSub(partial_pivoting(Hb),1)
-        r = residual_error(H,gauss_partial_sol,b)
-        rnorm = norm_residual_error(r)
+        r = residual_error(H,gauss_partial_sol,b) # residual error
+        rnorm = norm_residual_error(r)            # norm of residual error
         print ("Method: Gauss-Partial-Pivoting\n")
-        printSolutions(Hb,H,gauss_partial_sol,b,r,rnorm) # partial
+        printSolutions(Hb,H,gauss_partial_sol,b,r,rnorm) # Partial
     elif (method == 2):
         gauss_scaled_partial_pivoting = backSub(scaled_partial_pivoting(Hb),1)
         r = residual_error(H,gauss_scaled_partial_pivoting,b)
@@ -330,13 +330,13 @@ def solve_matrix (Hb, method, b, H=None, x=None, n=100):
         lu_sol = solveLU(L,U,b)
         r = residual_error(H,lu_sol,b)
         rnorm = norm_residual_error(r)
-        printSolutions(Hb, H,lu_sol,b,r,rnorm) # scaled partial
+        printSolutions(Hb, H,lu_sol,b,r,rnorm) # LU
     else:
         gs = gauss_seidel(H, b)
         r = residual_error(H,gs,b)
         rnorm = norm_residual_error(r)
         print("Method: Gauss-Seidel\n")
-        printSolutions(Hb, H,gs,b,r,rnorm) 
+        printSolutions(Hb, H,gs,b,r,rnorm) # GAUSS-SEIDEL
 
 # calculates the residual error vector where r = Ax - b
 # and returns ||r||. That's it the norm of the r vector
