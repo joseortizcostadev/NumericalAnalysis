@@ -5,6 +5,7 @@
 @purpose:     Math 400, Assigment #1, Problem #3
 @description: This file contains useful methods to perform numerical analysis
               in matrices using the following methods:
+              0. Gauss-Naive
               1. Partial Pivotiong
               2. Scaled Partial Pivoting
               3. LU factorization
