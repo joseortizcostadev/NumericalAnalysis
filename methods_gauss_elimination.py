@@ -324,7 +324,7 @@ def solve_matrix (Hb, method, b, H=None, x=None, n=100):
         print("Method: Gauss-Scaled-Partial-Pivoting\n")
         printSolutions(Hb, H,gauss_scaled_partial_pivoting,b,r,rnorm) # scaled partial
     elif (method == 3):
-        print "\nLU FACTORIZATION NOT IMPLEMENTED YET\n"
+        print "\nLU FACTORIZATION\n"
         L = LU_factorization(H)[0] # gets L
         U = LU_factorization(H)[1] # gets U
         lu_sol = solveLU(L,U,b)
@@ -412,7 +412,7 @@ def solveLU(L,U,b):
 
 "----------- TEST FUNCTIONS ------------------------------------------------"
 
-for it in range(3,25):
+for it in range(5,6):
     print ("\n\n************ HILBERT MATRIX TEST ITERATION = %d *******************\n" %it)
     Hb = Hilbert_matrix(it) # creates H with b
     H = Hilbert_matrix_without_b(it) # creates H without b
