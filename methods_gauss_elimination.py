@@ -440,7 +440,7 @@ def solveLU(L,U,b):
   
 
 
-for it in range(1,2):
+for it in range(3,6):
     print ("\n\n************ HILBERT MATRIX TEST ITERATION = %d *******************\n" %it)
     Hb = Hilbert_matrix(it) # creates H with b
     H = Hilbert_matrix_without_b(it) # creates H without b
@@ -449,3 +449,153 @@ for it in range(1,2):
     solve_matrix(Hb,Method.SCALED_PARTIAL, b,H) # solve H by Scaled Partial
     solve_matrix(Hb,Method.LU_FACTORIZATION, b,H) # solve H by LU Factorization
     solve_matrix(Hb,Method.GAUSS_SEIDEL, b,H) # Solve H by Gauss-Seidel 
+    
+"--------------------- SAMPLE OUTPUT WITH H ZIZE OF N=3,4,5 ---------------------------"
+"""
+************ HILBERT MATRIX TEST ITERATION = 3 and GAUSS-SEIDEL TOLERANCE SET TO 1e-5*******************
+
+Method: Gauss-Naive
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.0243249469631               b1 = 0.636619772368                    Ax1 = [0.6366197723675813]                     r1 = 0.0
+x2 = 1.87827195473                  b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
+x3 = -0.834573774104                b3 = 0.294544918208                    Ax3 = [0.2945449182075103]                     r3 = 5.55111512313e-17
+
+Norm of the residual error vector ||r|| = 7.450581e-09
+
+
+Method: Gauss-Scaled-Partial-Pivoting
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.0243249469631               b1 = 0.636619772368                    Ax1 = [0.6366197723675813]                     r1 = 0.0
+x2 = 1.87827195473                  b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
+x3 = -0.834573774104                b3 = 0.294544918208                    Ax3 = [0.2945449182075103]                     r3 = 5.55111512313e-17
+
+Norm of the residual error vector ||r|| = 7.450581e-09
+
+
+
+LU FACTORIZATION
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.0243249469631               b1 = 0.636619772368                    Ax1 = [0.63661977236758127]                     r1 = 0.0
+x2 = 1.87827195473                  b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
+x3 = -0.834573774104                b3 = 0.294544918208                    Ax3 = [0.29454491820751033]                     r3 = 0.0
+
+Norm of the residual error vector ||r|| = 0.000000e+00
+
+
+Method: Gauss-Seidel
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.0238113095385               b1 = 0.636619772368                    Ax1 = [0.63662960393696899]                     r1 = 9.83156938772e-06
+x2 = 1.87565053397                  b2 = 0.405284734569                    Ax2 = [0.40527292475545901]                     r2 = 1.18098138921e-05
+x3 = -0.832153060522                b3 = 0.294544918208                    Ax3 = [0.29454491820751028]                     r3 = 5.55111512313e-17
+
+Norm of the residual error vector ||r|| = 4.652030e-03
+
+
+
+
+************ HILBERT MATRIX TEST ITERATION = 4 *******************
+
+Method: Gauss-Naive
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.00225843680834              b1 = 0.636619772368                    Ax1 = [0.6366197723675813]                     r1 = 0.0
+x2 = 1.61347383287                  b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
+x3 = -0.172578469461                b3 = 0.294544918208                    Ax3 = [0.29454491820751033]                     r3 = 0.0
+x4 = -0.441330203095                b4 = 0.230319907258                    Ax4 = [0.2303199072583571]                     r4 = 5.55111512313e-17
+
+Norm of the residual error vector ||r|| = 7.450581e-09
+
+
+Method: Gauss-Scaled-Partial-Pivoting
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.00225843680834              b1 = 0.636619772368                    Ax1 = [0.6366197723675813]                     r1 = 0.0
+x2 = 1.61347383287                  b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
+x3 = -0.172578469461                b3 = 0.294544918208                    Ax3 = [0.29454491820751033]                     r3 = 0.0
+x4 = -0.441330203095                b4 = 0.230319907258                    Ax4 = [0.23031990725835708]                     r4 = 2.77555756156e-17
+
+Norm of the residual error vector ||r|| = 5.268356e-09
+
+
+
+LU FACTORIZATION
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.00225843680834              b1 = 0.636619772368                    Ax1 = [0.63661977236758127]                     r1 = 0.0
+x2 = 1.61347383287                  b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
+x3 = -0.172578469461                b3 = 0.294544918208                    Ax3 = [0.29454491820751039]                     r3 = 5.55111512313e-17
+x4 = -0.441330203095                b4 = 0.230319907258                    Ax4 = [0.2303199072583571]                     r4 = 5.55111512313e-17
+
+Norm of the residual error vector ||r|| = 1.053671e-08
+
+
+Method: Gauss-Seidel
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.0012957993492               b1 = 0.636619772368                    Ax1 = [0.63662938883508569]                     r1 = 9.61646750441e-06
+x2 = 1.60460060752                  b2 = 0.405284734569                    Ax2 = [0.40527553818259138]                     r2 = 9.19638675972e-06
+x3 = -0.153399668675                b3 = 0.294544918208                    Ax3 = [0.29454368990570995]                     r3 = 1.22830180038e-06
+x4 = -0.452967570741                b4 = 0.230319907258                    Ax4 = [0.23031990725835705]                     r4 = 0.0
+
+Norm of the residual error vector ||r|| = 4.476735e-03
+
+
+
+
+************ HILBERT MATRIX TEST ITERATION = 5 *******************
+
+Method: Gauss-Naive
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = 0.000233011050577              b1 = 0.636619772368                    Ax1 = [0.6366197723675813]                     r1 = 0.0
+x2 = 1.5636448757                   b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
+x3 = 0.0516518378417                b3 = 0.294544918208                    Ax3 = [0.2945449182075104]                     r3 = 5.55111512313e-17
+x4 = -0.790132903344                b4 = 0.230319907258                    Ax4 = [0.23031990725835716]                     r4 = 1.11022302463e-16
+x5 = 0.174401350125                 b5 = 0.188644230344                    Ax5 = [0.1886442303436197]                     r5 = 2.77555756156e-17
+
+Norm of the residual error vector ||r|| = 1.393876e-08
+
+
+Method: Gauss-Scaled-Partial-Pivoting
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = 0.000233011050578              b1 = 0.636619772368                    Ax1 = [0.6366197723675813]                     r1 = 0.0
+x2 = 1.5636448757                   b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
+x3 = 0.0516518378418                b3 = 0.294544918208                    Ax3 = [0.2945449182075104]                     r3 = 5.55111512313e-17
+x4 = -0.790132903344                b4 = 0.230319907258                    Ax4 = [0.23031990725835708]                     r4 = 2.77555756156e-17
+x5 = 0.174401350125                 b5 = 0.188644230344                    Ax5 = [0.18864423034361968]                     r5 = 0.0
+
+Norm of the residual error vector ||r|| = 9.125060e-09
+
+
+
+LU FACTORIZATION
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = 0.000233011050618              b1 = 0.636619772368                    Ax1 = [0.63661977236758138]                     r1 = 1.11022302463e-16
+x2 = 1.56364487569                  b2 = 0.405284734569                    Ax2 = [0.40528473456935121]                     r2 = 1.11022302463e-16
+x3 = 0.0516518378449                b3 = 0.294544918208                    Ax3 = [0.29454491820751039]                     r3 = 5.55111512313e-17
+x4 = -0.790132903349                b4 = 0.230319907258                    Ax4 = [0.23031990725835708]                     r4 = 2.77555756156e-17
+x5 = 0.174401350127                 b5 = 0.188644230344                    Ax5 = [0.18864423034361966]                     r5 = 2.77555756156e-17
+
+Norm of the residual error vector ||r|| = 1.825012e-08
+
+
+Method: Gauss-Seidel
+
+Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
+x1 = -0.000476048248262             b1 = 0.636619772368                    Ax1 = [0.63662976081707379]                     r1 = 9.98844949252e-06
+x2 = 1.61180228656                  b2 = 0.405284734569                    Ax2 = [0.40526118592768628]                     r2 = 2.35486416648e-05
+x3 = -0.23772544569                 b3 = 0.294544918208                    Ax3 = [0.29455296491816502]                     r3 = 8.04671065469e-06
+x4 = -0.274929013029                b4 = 0.230319907258                    Ax4 = [0.23033167326494494]                     r4 = 1.17660065879e-05
+x5 = -0.104106328648                b5 = 0.188644230344                    Ax5 = [0.18864423034361968]                     r5 = 0.0
+
+Norm of the residual error vector ||r|| = 7.304095e-03
+
+
+>>> 
+"""
