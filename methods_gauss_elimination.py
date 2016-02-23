@@ -450,9 +450,9 @@ for it in range(3,6):
     solve_matrix(Hb,Method.LU_FACTORIZATION, b,H) # solve H by LU Factorization
     solve_matrix(Hb,Method.GAUSS_SEIDEL, b,H) # Solve H by Gauss-Seidel 
     
-"--------------------- SAMPLE OUTPUT WITH H ZIZE OF N=3,4,5 ---------------------------"
+"--------------------- SAMPLE OUTPUT WITH H ZIZE OF N=3,4,5 and GAUSS-SEIDEL TOLERANCE SET TO 1e-5---------------------------"
 """
-************ HILBERT MATRIX TEST ITERATION = 3 and GAUSS-SEIDEL TOLERANCE SET TO 1e-5*******************
+************ HILBERT MATRIX TEST ITERATION = 3 *******************
 
 Method: Gauss-Naive
 
