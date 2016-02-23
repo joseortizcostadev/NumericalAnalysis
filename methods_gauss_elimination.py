@@ -251,7 +251,6 @@ def LUFactorization (M):
 # and modified by me 
 def gauss_seidel(Hb,x=None, eps=1e-05, max_it = 100):
     n = len(Hb);
-    print x
     if x==None:
         x = [0 for __ in Hb]
     x = sum(x, [])
@@ -424,7 +423,15 @@ def solveLU(L,U,b):
     B = np.array(b)
     return np.linalg.solve(LU, B) # solve LU with b
 
-
+def printMatrix(H,n):
+    print ("\nHILBERT MATRIX\n")
+    print H
+    print "\n"
+        
+        
+        
+        
+        
 
 
     
@@ -442,6 +449,7 @@ for it in range(3,6):
 
     print ("\n\n************ HILBERT MATRIX TEST ITERATION = %d *******************\n" %it)
     Hb = Hilbert_matrix(it) # creates H with b
+    print printMatrix(Hb, it)
     H = Hilbert_matrix_without_b(it) # creates H without b
     b = Hilbert_matrix_b(it) # creates b
     solve_matrix(Hb,Method.NAIVE, b,H) # solve H by Gauss-Naive
@@ -455,6 +463,13 @@ for it in range(3,6):
 """
 ************ HILBERT MATRIX TEST ITERATION = 3 *******************
 
+
+HILBERT MATRIX
+
+[[1.0, 0.5, 0.3333333333333333, 0.6366197723675813], [0.5, 0.3333333333333333, 0.25, 0.4052847345693511], [0.3333333333333333, 0.25, 0.2, 0.29454491820751033]]
+
+
+None
 Method: Gauss-Naive
 
 Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
@@ -488,7 +503,6 @@ Norm of the residual error vector ||r|| = 0.000000e+00
 
 Method: Gauss-Seidel
 
-[[-0.02432494696310017], [1.878271954730636], [-0.8345737741039098]]
 Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
 x1 = -0.0243249469631               b1 = 0.636619772368                    Ax1 = [0.6366197723675813]                     r1 = 0.0
 x2 = 1.87827195473                  b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
@@ -501,6 +515,13 @@ Norm of the residual error vector ||r|| = 0.000000e+00
 
 ************ HILBERT MATRIX TEST ITERATION = 4 *******************
 
+
+HILBERT MATRIX
+
+[[1.0, 0.5, 0.3333333333333333, 0.25, 0.6366197723675813], [0.5, 0.3333333333333333, 0.25, 0.2, 0.4052847345693511], [0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.29454491820751033], [0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.23031990725835705]]
+
+
+None
 Method: Gauss-Naive
 
 Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
@@ -537,7 +558,6 @@ Norm of the residual error vector ||r|| = 1.053671e-08
 
 Method: Gauss-Seidel
 
-[[-0.002258436808344033], [1.613473832873563], [-0.17257846946122826], [-0.4413302030951206]]
 Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
 x1 = -0.00225843680834              b1 = 0.636619772368                    Ax1 = [0.6366197723675812]                     r1 = 1.11022302463e-16
 x2 = 1.61347383287                  b2 = 0.405284734569                    Ax2 = [0.405284734569351]                     r2 = 1.11022302463e-16
@@ -551,6 +571,13 @@ Norm of the residual error vector ||r|| = 1.666000e-08
 
 ************ HILBERT MATRIX TEST ITERATION = 5 *******************
 
+
+HILBERT MATRIX
+
+[[1.0, 0.5, 0.3333333333333333, 0.25, 0.2, 0.6366197723675813], [0.5, 0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.4052847345693511], [0.3333333333333333, 0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.29454491820751033], [0.25, 0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.23031990725835705], [0.2, 0.16666666666666666, 0.14285714285714285, 0.125, 0.1111111111111111, 0.18864423034361968]]
+
+
+None
 Method: Gauss-Naive
 
 Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
@@ -590,7 +617,6 @@ Norm of the residual error vector ||r|| = 1.825012e-08
 
 Method: Gauss-Seidel
 
-[[0.0002330110505773808], [1.563644875695128], [0.051651837841748836], [-0.7901329033442154], [0.17440135012455418]]
 Hilbert X solutions                 Hilbert b solutions                          Compute Ax                    Residual Error Vector (r = b - Ax)
 x1 = 0.000233011050577              b1 = 0.636619772368                    Ax1 = [0.6366197723675813]                     r1 = 0.0
 x2 = 1.5636448757                   b2 = 0.405284734569                    Ax2 = [0.4052847345693511]                     r2 = 0.0
